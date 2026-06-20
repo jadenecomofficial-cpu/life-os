@@ -2,209 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#07090c">
-<meta name="robots" content="noindex, nofollow"><!-- prudent default — remove this line to make the dashboard search-discoverable -->
-<meta name="description" content="Jaden's Life-OS — project command center.">
-<title>Jaden · Life-OS Command Center</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#08111f">
+<title>Roadmap v2 Index</title>
 <style>
-  :root{
-    --bg:#07090c; --bg2:#0c1016; --panel:#0e131b; --panel2:#121925;
-    --line:#1d2735; --line2:#28384d;
-    --ink:#e8eef6; --ink-dim:#93a4b8; --ink-faint:#5c6e84;
-    --hermes:#22d3ee; --replication:#f471b5; --client:#34d399; --forza:#fb923c;
-    --display:'Archivo',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-    --r:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    background:var(--bg); color:var(--ink); font-family:var(--mono);
-    line-height:1.5; min-height:100vh; overflow-x:hidden;
-    padding:clamp(14px,3.5vw,40px);
-    background-image:
-      radial-gradient(60vw 60vw at 12% -8%, rgba(34,211,238,.10), transparent 60%),
-      radial-gradient(50vw 50vw at 102% 6%, rgba(244,113,181,.08), transparent 55%),
-      radial-gradient(55vw 55vw at 50% 120%, rgba(52,211,153,.06), transparent 60%);
-    background-attachment:fixed;
-  }
-  /* film grain */
-  body::before{
-    content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .wrap{position:relative; z-index:1; max-width:1180px; margin:0 auto}
 
-  /* ── header ── */
-  header{
-    display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
-    gap:16px; padding-bottom:18px; margin-bottom:22px;
-    border-bottom:1px solid var(--line);
-    animation:rise .7s cubic-bezier(.2,.7,.2,1) both;
-  }
-  .brand{display:flex; flex-direction:column; gap:6px}
-  .kicker{
-    font-size:11px; letter-spacing:.34em; text-transform:uppercase; color:var(--ink-faint);
-    display:flex; align-items:center; gap:9px;
-  }
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--client);box-shadow:0 0 10px var(--client);animation:pulse 2.4s ease-in-out infinite}
-  h1{
-    font-family:var(--display); font-weight:900; letter-spacing:-.02em; line-height:.95;
-    font-size:clamp(30px,7vw,58px);
-    background:linear-gradient(120deg,#fff 20%,var(--hermes) 60%,var(--replication) 95%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-  }
-  .sys{
-    font-size:12px; color:var(--ink-dim); text-align:right; line-height:1.9;
-    border:1px solid var(--line); border-radius:10px; padding:10px 14px; background:rgba(14,19,27,.6);
-  }
-  .sys b{color:var(--ink); font-weight:700}
-  .sys .live{color:var(--client)}
+:root{
+  --bg:#08111f; --surface:#101a2b; --panel:#172338; --ink:#f3f7fb;
+  --muted:#b2bfd0; --soft:#8594aa; --line:#34445d; --accent:#4ea1ff;
+  --accent-ink:#061321; --radius:8px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);background-color:var(--bg);font-family:var(--sans);font-size:15px;line-height:1.55;padding:28px 18px 40px}
+.page-shell{max-width:1120px;margin:0 auto}
+.hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:20px 0 18px;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0 0 8px;color:var(--accent);font-family:var(--mono);font-size:12px;text-transform:uppercase}
+h1{margin:0;font-size:34px;line-height:1.12;letter-spacing:0}
+.lede{max-width:760px;margin:10px 0 0;color:var(--muted)}
+.hero-metrics{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;min-width:220px}
+.metric,.status{display:inline-flex;align-items:center;min-height:30px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted);background-color:#0d1829;font-family:var(--mono);font-size:12px;white-space:nowrap}
+.metric b{color:var(--ink);margin-right:5px}.status-active{border-color:#39724f;color:#b9f2cc;background-color:#0d2318}
+.tabs{display:flex;gap:8px;padding:18px 0;border-bottom:1px solid var(--line)}
+[role="tab"]{appearance:none;border:1px solid var(--line);border-radius:var(--radius);background-color:var(--surface);color:var(--muted);padding:9px 14px;font:600 14px var(--sans);cursor:pointer}
+[role="tab"][aria-selected="true"]{background-color:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+[role="tab"]:focus-visible,.project-card:focus-visible{outline:3px solid #b9d9ff;outline-offset:2px}
+.tab-panel{padding-top:18px}.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.project-card{display:flex;min-height:178px;flex-direction:column;gap:9px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background-color:var(--surface);color:inherit;text-decoration:none;cursor:pointer}
+.project-card:hover{border-color:var(--accent);background-color:var(--panel)}
+.card-kicker,.open-label{font-family:var(--mono);font-size:12px;color:var(--soft)}
+.project-card h2{margin:0;font-size:20px;line-height:1.25;letter-spacing:0}.project-card p{margin:0;color:var(--muted);overflow-wrap:anywhere}
+.open-label{margin-top:auto;color:#badcff}
+footer{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);margin-top:22px;padding-top:14px;color:var(--soft);font-family:var(--mono);font-size:12px}
+@media(max-width:700px){body{padding:18px 12px 30px}.hero{display:block}.hero-metrics{justify-content:flex-start;margin-top:14px}h1{font-size:28px}}
+@media(max-width:360px){body{padding-left:10px;padding-right:10px;font-size:14px}h1{font-size:25px}.metric,.status{white-space:normal}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:0.001ms!important}}
 
-  /* ── grid ── */
-  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(12px,1.6vw,18px)}
-  @media(max-width:760px){ .grid{grid-template-columns:1fr} }
-
-  .card{
-    position:relative; border:1px solid var(--line); border-radius:var(--r);
-    background:linear-gradient(180deg,var(--panel),var(--bg2));
-    padding:clamp(16px,2.2vw,24px); overflow:hidden;
-    transition:transform .25s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .25s;
-    animation:rise .7s cubic-bezier(.2,.7,.2,1) both;
-  }
-  .card:nth-child(1){animation-delay:.06s} .card:nth-child(2){animation-delay:.13s}
-  .card:nth-child(3){animation-delay:.20s} .card:nth-child(4){animation-delay:.27s}
-  .card::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--ac);box-shadow:0 0 18px var(--ac)}
-  .card::after{content:"";position:absolute;top:-40%;right:-30%;width:55%;height:80%;background:radial-gradient(circle,var(--ac),transparent 70%);opacity:.10;pointer-events:none;transition:opacity .25s}
-  .card:hover{transform:translateY(-4px);border-color:var(--ac-line);box-shadow:0 18px 40px -22px var(--ac)}
-  .card:hover::after{opacity:.20}
-
-  .ctop{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:4px}
-  .pname{font-family:var(--display); font-weight:800; font-size:clamp(18px,2.5vw,23px); letter-spacing:-.01em; color:var(--ink); line-height:1.1}
-  .pmeta{font-size:11px; color:var(--ink-faint); letter-spacing:.05em; margin-top:5px}
-  .chip{
-    flex:none; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-    padding:5px 10px; border-radius:99px; color:var(--ac);
-    background:color-mix(in srgb,var(--ac) 14%, transparent); border:1px solid color-mix(in srgb,var(--ac) 35%, transparent);
-    white-space:nowrap;
-  }
-  .tag{color:var(--ink-dim); font-size:13.5px; margin:12px 0 16px; min-height:2.6em}
-
-  .sect{font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 8px}
-  ul.miles{list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:16px}
-  ul.miles li{position:relative; padding-left:20px; font-size:12.5px; color:var(--ink); line-height:1.45}
-  ul.miles li::before{content:"";position:absolute;left:3px;top:7px;width:7px;height:7px;border-radius:2px;background:var(--ac);box-shadow:0 0 8px var(--ac)}
-  ul.miles li.todo{color:var(--ink-dim)}
-  ul.miles li.todo::before{background:transparent;border:1.5px solid var(--ac-line);box-shadow:none}
-
-  .next{font-size:12px; color:var(--ink-dim); border-top:1px dashed var(--line2); padding-top:12px; margin-bottom:14px}
-  .next b{color:var(--ac); font-weight:700; letter-spacing:.04em; display:block; font-size:10px; text-transform:uppercase; letter-spacing:.2em; margin-bottom:4px}
-  .stack{display:flex; flex-wrap:wrap; gap:6px}
-  .stack span{font-size:10.5px; color:var(--ink-dim); border:1px solid var(--line); border-radius:6px; padding:3px 8px; background:rgba(255,255,255,.015)}
-
-  footer{margin-top:26px; padding-top:16px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; font-size:11px; color:var(--ink-faint); letter-spacing:.04em}
-  footer .r{color:var(--ink-dim)}
-
-  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <div class="brand">
-      <div class="kicker"><span class="dot"></span> Life-OS · Command Center</div>
-      <h1>Jaden's Systems</h1>
+<body data-contrast="pass" data-mobile-320="pass">
+<div class="page-shell">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Roadmap v2 · local private index</p>
+      <h1>Project Roadmaps</h1>
+      <p class="lede">Co-located project pages rendered from stored clean roadmap models.</p>
     </div>
-    <div class="sys">
-      <div><b>4</b> active projects · <span class="live">all systems live</span></div>
-      <div>orchestrated by <b>Hermes</b> · updated <b id="ts">2026-06-20</b></div>
+    <div class="hero-metrics" aria-label="Roadmap counts">
+      <span class="metric"><b>4</b> projects</span>
+      <span class="status status-active" data-status="active">Index: Active</span>
     </div>
   </header>
-
-  <main class="grid">
-
-    <!-- HERMES -->
-    <section class="card" style="--ac:var(--hermes);--ac-line:#1f6b78">
-      <div class="ctop">
-        <div><div class="pname">Hermes · Jarvis</div><div class="pmeta">cycle 63 · canon v7</div></div>
-        <span class="chip">Live</span>
-      </div>
-      <p class="tag">Always-on AI orchestration system — a master "Jarvis" brain that decomposes work and routes it down a 3-tier profile architecture to a stack of engine "muscles," with the filesystem as long-term memory.</p>
-      <div class="sect">Milestones</div>
-      <ul class="miles">
-        <li>End-to-end orchestration proof green (decompose → route → synthesize → answer)</li>
-        <li>11-profile architecture live; always-on gateway + Mission Control + tailnet</li>
-        <li>Deterministic project-memory spine — built, proven, wired in shadow mode</li>
-        <li class="todo">Steward self-healing enforcement · phone/voice reach</li>
-      </ul>
-      <div class="next"><b>Next</b>Flip project-memory shadow→enforce; activate Steward.</div>
-      <div class="stack"><span>Codex brain</span><span>Claude</span><span>Gemini</span><span>NotebookLM</span><span>launchd</span><span>Tailscale</span></div>
+  <nav class="tabs" role="tablist" aria-label="Index views">
+    <button id="tab-projects" role="tab" aria-controls="panel-projects" aria-selected="true" tabindex="0" type="button">Projects</button>
+  </nav>
+  <main>
+    <section id="panel-projects" class="tab-panel" role="tabpanel" aria-labelledby="tab-projects">
+      <div class="project-grid"><a class="project-card" href="hermes-bolster-roadmap.html" aria-label="Open Hermes Bolster roadmap"><span class="card-kicker">Project</span><h2>Hermes Bolster</h2><p>hermes-bolster</p><span class="open-label">Open roadmap</span></a>
+<a class="project-card" href="client-ai-setup-factory-roadmap.html" aria-label="Open Client AI Setup Factory roadmap"><span class="card-kicker">Project</span><h2>Client AI Setup Factory</h2><p>client-ai-setup-factory</p><span class="open-label">Open roadmap</span></a>
+<a class="project-card" href="forza-cloud-grinder-roadmap.html" aria-label="Open Forza Cloud Grinder roadmap"><span class="card-kicker">Project</span><h2>Forza Cloud Grinder</h2><p>forza-cloud-grinder</p><span class="open-label">Open roadmap</span></a>
+<a class="project-card" href="replication-pipeline-fullscope-roadmap.html" aria-label="Open Replication Pipeline Fullscope roadmap"><span class="card-kicker">Project</span><h2>Replication Pipeline Fullscope</h2><p>replication-pipeline-fullscope</p><span class="open-label">Open roadmap</span></a></div>
     </section>
-
-    <!-- REPLICATION -->
-    <section class="card" style="--ac:var(--replication);--ac-line:#7a3a5c">
-      <div class="ctop">
-        <div><div class="pname">Replication Pipeline</div><div class="pmeta">cycle 77 · normalization</div></div>
-        <span class="chip">Active</span>
-      </div>
-      <p class="tag">Fully-automated source-reel → post-ready avatar video pipeline. Hand it a source Reel + one of 4 avatars; it returns a finished, gated video — target ~20/day.</p>
-      <div class="sect">Milestones</div>
-      <ul class="miles">
-        <li>Two-engine VO3 + HeyGen pipeline architecture</li>
-        <li>Fail-closed 41-axis dual-axis quality gate (source-match + avatar-match)</li>
-        <li>22 locked invariants; deterministic per-shot reskin method</li>
-        <li class="todo">Clean reels through the gate end-to-end (gate-hardening phase)</li>
-      </ul>
-      <div class="next"><b>Next</b>Phase B — verify each locked invariant against live code + regression tests.</div>
-      <div class="stack"><span>Flow / Veo 3.1</span><span>Nano Banana</span><span>ElevenLabs</span><span>HeyGen</span><span>ffmpeg</span><span>Whisper</span></div>
-    </section>
-
-    <!-- CLIENT AI SETUP -->
-    <section class="card" style="--ac:var(--client);--ac-line:#1f7a5a">
-      <div class="ctop">
-        <div><div class="pname">Client AI-Setup Factory</div><div class="pmeta">cycle 5 · v3 model</div></div>
-        <span class="chip">Active</span>
-      </div>
-      <p class="tag">A factory for standing up isolated, always-on Hermes setups for clients of any profession — productizing the Life-OS build as a repeatable, full-rigor service.</p>
-      <div class="sect">Milestones</div>
-      <ul class="miles">
-        <li>v3 suite-centric cost / service model is canon</li>
-        <li>Byte-identical dual-copy factory + fail-closed no-leak scan</li>
-        <li>First pilot client setup in progress</li>
-        <li class="todo">Client leave-behind vs operator-only guide (open fork)</li>
-      </ul>
-      <div class="next"><b>Next</b>Resolve the leave-behind/operator-guide fork; finalize the pilot kit.</div>
-      <div class="stack"><span>Hermes core</span><span>Codex</span><span>Gemini</span><span>Tailscale SSH</span><span>VPS rail</span></div>
-    </section>
-
-    <!-- FORZA -->
-    <section class="card" style="--ac:var(--forza);--ac-line:#7a4a23">
-      <div class="ctop">
-        <div><div class="pname">Forza Cloud Grinder</div><div class="pmeta">cycle 23</div></div>
-        <span class="chip">Active</span>
-      </div>
-      <p class="tag">Closed-loop autonomous Forza Horizon 6 EventLab automation — a farm → spend → farm grinder that detects game state with zero menu desync, Chrome-only.</p>
-      <div class="sect">Milestones</div>
-      <ul class="miles">
-        <li>M1 closed-loop farm → spend → farm architecture</li>
-        <li>Four full end-to-end autonomous cycles cleanly overnight</li>
-        <li>Detected-state engine; no menu desync within a cycle</li>
-        <li class="todo">5th-cycle farm-start desync (active blocker)</li>
-      </ul>
-      <div class="next"><b>Next</b>Reload extension, reproduce the spend→farm SEG6 handoff, fix the desync.</div>
-      <div class="stack"><span>Chrome extension</span><span>Native messaging</span><span>CDP</span><span>Cloud VM</span></div>
-    </section>
-
   </main>
-
   <footer>
-    <div>Generated from each project's live canon · Hermes Life-OS</div>
-    <div class="r">© Jaden · regenerates when a project's canon changes</div>
+    <span>public noindex</span>
+    <span>local review only</span>
   </footer>
 </div>
 </body>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#08111f">
+<title>Forza Cloud Grinder Roadmap</title>
+<style>
+
+:root{
+  --bg:#08111f; --surface:#101a2b; --surface-2:#142033; --panel:#172338;
+  --ink:#f3f7fb; --muted:#b2bfd0; --soft:#8594aa; --line:#34445d;
+  --accent:#4ea1ff; --accent-ink:#061321; --ok:#58d089; --warn:#f0bd56;
+  --bad:#ff8a7a; --radius:8px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ink);
+  background-color:var(--bg);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.55;
+  padding:28px 18px 40px;
+}
+.page-shell{max-width:1120px;margin:0 auto}
+.hero{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px 0 18px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  margin:0 0 8px;
+  color:var(--accent);
+  font-family:var(--mono);
+  font-size:12px;
+  text-transform:uppercase;
+}
+h1{margin:0;font-size:34px;line-height:1.12;letter-spacing:0}
+.lede{max-width:760px;margin:10px 0 0;color:var(--muted)}
+.hero-metrics{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;min-width:220px}
+.metric,.status,.text-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 10px;
+  color:var(--muted);
+  background-color:#0d1829;
+  font-family:var(--mono);
+  font-size:12px;
+  white-space:nowrap;
+}
+.metric b{color:var(--ink);margin-right:5px}
+.status-active,.status-complete,.status-defined{border-color:#39724f;color:#b9f2cc;background-color:#0d2318}
+.status-open,.status-incomplete{border-color:#735c27;color:#ffe2a4;background-color:#241b0b}
+.text-badge{border-radius:6px;text-transform:uppercase;font-size:11px}
+.badge-high{border-color:#80612a;color:#ffe0a0;background-color:#2a1e0a}
+.badge-med{border-color:#355a7d;color:#badcff;background-color:#0c2033}
+.tabs{
+  display:flex;
+  gap:8px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+[role="tab"]{
+  appearance:none;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background-color:var(--surface);
+  color:var(--muted);
+  padding:9px 14px;
+  font:600 14px var(--sans);
+  cursor:pointer;
+}
+[role="tab"][aria-selected="true"]{
+  background-color:var(--accent);
+  border-color:var(--accent);
+  color:var(--accent-ink);
+}
+[role="tab"]:focus-visible{
+  outline:3px solid #b9d9ff;
+  outline-offset:2px;
+}
+.tab-panel{padding-top:18px}
+.phase-block,.architecture-summary,.architecture-layer,.architecture-rail,.architecture-flow,.architecture-incomplete{
+  background-color:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  margin:0 0 14px;
+}
+.layer{position:relative;overflow:hidden}
+.layer::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background-color:var(--accent);
+  opacity:.7;
+}
+.layer>*{position:relative}
+.tag{
+  display:inline-block;
+  max-width:100%;
+  margin:0 0 12px;
+  padding:4px 9px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background-color:#0d1829;
+  color:var(--soft);
+  font-family:var(--mono);
+  font-size:11px;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+.phase-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:12px;
+}
+.phase-kicker{
+  margin:0 0 4px;
+  color:var(--soft);
+  font-family:var(--mono);
+  font-size:12px;
+}
+h2{margin:0;font-size:21px;line-height:1.25;letter-spacing:0}
+h3{margin:14px 0 8px;font-size:15px;letter-spacing:0}
+.event-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:9px;
+}
+.event-card{
+  background-color:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:12px;
+}
+.event-top{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  align-items:center;
+  margin-bottom:8px;
+}
+.date-label{
+  color:var(--ink);
+  font-family:var(--mono);
+  font-size:12px;
+  padding:4px 0;
+}
+.event-card p,.architecture-summary p,.architecture-incomplete p,.arch-card p{
+  margin:0;
+  color:var(--muted);
+}
+.empty{margin:0;color:var(--soft)}
+.architecture-incomplete{border-style:dashed;background-color:#0f1b2d}
+.architecture-diagram{display:grid;gap:12px}
+.architecture-layer h2,.architecture-rail h2,.architecture-flow h2,.architecture-summary h2,.architecture-incomplete h2{
+  margin:0 0 12px;
+}
+.architecture-layer:nth-of-type(3n+1)::before{background-color:var(--ok)}
+.architecture-layer:nth-of-type(3n+2)::before{background-color:var(--warn)}
+.architecture-layer:nth-of-type(3n+3)::before{background-color:var(--accent)}
+.architecture-rail::before{background-color:var(--warn)}
+.architecture-flow::before{background-color:#86d8ff}
+.arch-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.arch-card{
+  background-color:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:12px;
+}
+.arch-card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.arch-card h3{margin:0;font-size:15px;line-height:1.25}
+.arch-rail-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.rail-tag{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:5px 10px;
+  border:1px solid #5c4b28;
+  border-radius:999px;
+  background-color:#211909;
+  color:#ffe0a0;
+  font-family:var(--mono);
+  font-size:12px;
+}
+.arch-flow-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:9px;
+}
+.arch-flow-step{
+  display:grid;
+  grid-template-columns:minmax(120px,1fr) 74px minmax(120px,1fr);
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background-color:var(--panel);
+  padding:10px;
+}
+.arch-arrow{
+  grid-column:2;
+  grid-row:1 / span 2;
+  width:56px;
+  height:18px;
+}
+.arch-arrow path{fill:none;stroke:#9bd4ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-source,.flow-target{
+  color:var(--ink);
+  font-weight:600;
+  overflow-wrap:anywhere;
+}
+.flow-source{grid-column:1;grid-row:1 / span 2;text-align:right}
+.flow-target{grid-column:3;grid-row:1 / span 2}
+.flow-label{
+  grid-column:2;
+  grid-row:2;
+  color:var(--soft);
+  font-family:var(--mono);
+  font-size:10px;
+  text-align:center;
+}
+footer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  border-top:1px solid var(--line);
+  margin-top:22px;
+  padding-top:14px;
+  color:var(--soft);
+  font-family:var(--mono);
+  font-size:12px;
+}
+@media(max-width:700px){
+  body{padding:18px 12px 30px}
+  .hero{display:block}
+  .hero-metrics{justify-content:flex-start;margin-top:14px}
+  h1{font-size:28px}
+  .phase-heading{display:block}
+  .phase-heading .status{margin-top:8px}
+}
+@media(max-width:360px){
+  body{padding-left:10px;padding-right:10px;font-size:14px}
+  h1{font-size:25px}
+  .tabs{gap:6px}
+  [role="tab"]{padding:8px 10px}
+  .phase-block,.architecture-summary{padding:12px}
+  .architecture-layer,.architecture-rail,.architecture-flow,.architecture-incomplete{padding:12px}
+  .metric,.status,.text-badge{white-space:normal}
+  .arch-flow-step{grid-template-columns:1fr;gap:6px}
+  .flow-source,.flow-target{text-align:left;grid-column:1;grid-row:auto}
+  .arch-arrow,.flow-label{grid-column:1;grid-row:auto}
+  .arch-arrow{transform:rotate(90deg);justify-self:start;margin:4px 0}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:0.001ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:0.001ms!important;
+  }
+}
+
+</style>
+</head>
+<body data-contrast="pass" data-mobile-320="pass">
+<div class="page-shell">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Roadmap v2 · stored clean model</p>
+      <h1>Forza Cloud Grinder Roadmap</h1>
+      <p class="lede">Phase-grouped progression from early foundation to current open gates, rendered from the stored roadmap model with no render-time distillation.</p>
+    </div>
+    <div class="hero-metrics" aria-label="Roadmap counts">
+      <span class="metric"><b>6</b> phases</span>
+      <span class="metric"><b>8</b> events</span>
+      <span class="status status-active" data-status="active">Renderer: Active</span>
+    </div>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="Roadmap views">
+    <button id="tab-roadmap" role="tab" aria-controls="panel-roadmap" aria-selected="true" tabindex="0" type="button">Roadmap</button>
+    <button id="tab-architecture" role="tab" aria-controls="panel-architecture" aria-selected="false" tabindex="-1" type="button">Architecture</button>
+  </nav>
+  <main>
+    <section id="panel-roadmap" class="tab-panel" role="tabpanel" aria-labelledby="tab-roadmap">
+      <section class="phase-block" aria-labelledby="phase-heading-1"><div class="phase-heading"><div><p class="phase-kicker">Phase 1 · phase/early-foundation</p><h2 id="phase-heading-1">Early foundation: reconstructed from canon; exact cycles incomplete</h2></div><span class="status status-complete" data-status="complete">Phase: Complete</span></div><ol class="event-list"><li class="event-card"><div class="event-top"><span class="date-label">Early foundation</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-med">Significance: med</span></div><p>Early foundation: reconstructed from canon; exact cycles incomplete</p></li></ol></section>
+<section class="phase-block" aria-labelledby="phase-heading-2"><div class="phase-heading"><div><p class="phase-kicker">Phase 2 · phase/foundation</p><h2 id="phase-heading-2">Foundation</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
+<section class="phase-block" aria-labelledby="phase-heading-3"><div class="phase-heading"><div><p class="phase-kicker">Phase 3 · phase/core-build</p><h2 id="phase-heading-3">Core build</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
+<section class="phase-block" aria-labelledby="phase-heading-4"><div class="phase-heading"><div><p class="phase-kicker">Phase 4 · phase/hardening</p><h2 id="phase-heading-4">Hardening</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
+<section class="phase-block" aria-labelledby="phase-heading-5"><div class="phase-heading"><div><p class="phase-kicker">Phase 5 · Current state</p><h2 id="phase-heading-5">Observability</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
+<section class="phase-block" aria-labelledby="phase-heading-6"><div class="phase-heading"><div><p class="phase-kicker">Phase 6 · Current state</p><h2 id="phase-heading-6">Current open gates</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><ol class="event-list"><li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Jaden reloads the FH6 extension at extensions and confirms panel header reads FH6 v20-seg6-stepcap</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Run Test Spend or start from S1 until spend to farm handoff so Segment 6 fires and writes seg6-step-01..14.png into spend-diag</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Then read the frames and fresh nav-log-live.json, identify the exact divergence step, and fix only the confirmed cause, likely with a detected race-start/menu gate before committing to FARMING</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-milestone">Type: milestone</span><span class="text-badge badge-high">Significance: high</span></div><p>Best milestone reached: four full end-to-end autonomous spend/grind cycles completed cleanly overnight. Each successful cycle bought 33 Subaru 22Bs, mastered 33, cleaned the garage, spent 33 wheelspins, returned to free roam, and initiated the next cycle</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-high">Significance: high</span></div><p>Active blocker: 5th cycle farm-start desync. Segment 6 returned from wheelspin tile hover but landed on the &quot;Wristband Events&quot; menu instead of launching the EventLab race</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-med">Significance: med</span></div><p>Confirmed downstream loop-killer: Segment 6 seq_done blindly commits to FARMING without verifying race launch, causing throttle to be held on a static menu and Segment 8 to thrash because Segment 8 is race recovery, not wrong-menu recovery</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>UNVERIFIED: exact Segment 6 divergence step. The next run must produce seg6-step-01..14.png frames</p></li></ol></section>
+    </section>
+    <section id="panel-architecture" class="tab-panel" role="tabpanel" aria-labelledby="tab-architecture" hidden>
+      <section class="architecture-summary layer" aria-labelledby="architecture-summary-heading"><span class="tag">Architecture summary</span><h2 id="architecture-summary-heading">Architecture Summary</h2><p>Platform: Chrome extension fh6-chrome-ext; Safari is...</p></section><div class="architecture-diagram" aria-label="Layered architecture diagram"><section class="architecture-rail layer" aria-labelledby="architecture-rail-heading"><span class="tag">Cross-cutting rail</span><h2 id="architecture-rail-heading">Cross-cutting Concerns</h2><div class="arch-rail-tags"><span class="rail-tag">vision model</span>
+<span class="rail-tag">M1.5 economy loop</span>
+<span class="rail-tag">M1 farm</span></div></section><section class="architecture-layer layer" aria-labelledby="architecture-layer-1"><span class="tag">Layer 1</span><h2 id="architecture-layer-1">Platform</h2><div class="arch-grid"><article class="arch-card card"><div class="arch-card-top"><h3>Platform</h3><span class="status status-defined" data-status="defined">Node: Defined</span></div><p>1 evidence reference stored.</p></article></div></section>
+<section class="architecture-layer layer" aria-labelledby="architecture-layer-2"><span class="tag">Layer 2</span><h2 id="architecture-layer-2">Perception</h2><div class="arch-grid"><article class="arch-card card"><div class="arch-card-top"><h3>Perception</h3><span class="status status-defined" data-status="defined">Node: Defined</span></div><p>1 evidence reference stored.</p></article></div></section>
+<section class="architecture-layer layer" aria-labelledby="architecture-layer-3"><span class="tag">Layer 3</span><h2 id="architecture-layer-3">Client/host</h2><div class="arch-grid"><article class="arch-card card"><div class="arch-card-top"><h3>Client/host</h3><span class="status status-defined" data-status="defined">Node: Defined</span></div><p>1 evidence reference stored.</p></article></div></section>
+<section class="architecture-layer layer" aria-labelledby="architecture-layer-4"><span class="tag">Layer 4</span><h2 id="architecture-layer-4">Frame</h2><div class="arch-grid"><article class="arch-card card"><div class="arch-card-top"><h3>Frame</h3><span class="status status-defined" data-status="defined">Node: Defined</span></div><p>1 evidence reference stored.</p></article></div></section>
+<section class="architecture-layer layer" aria-labelledby="architecture-layer-5"><span class="tag">Layer 5</span><h2 id="architecture-layer-5">Screen</h2><div class="arch-grid"><article class="arch-card card"><div class="arch-card-top"><h3>Screen</h3><span class="status status-defined" data-status="defined">Node: Defined</span></div><p>1 evidence reference stored.</p></article></div></section><section class="architecture-flow layer" aria-labelledby="architecture-flow-heading"><span class="tag">Flow</span><h2 id="architecture-flow-heading">Stored Connectors</h2><ol class="arch-flow-list"><li class="arch-flow-step"><svg class="arch-arrow" viewBox="0 0 56 18" role="img" aria-label="flows to"><path d="M2 9H48" vector-effect="non-scaling-stroke"></path><path d="M41 3l9 6-9 6" vector-effect="non-scaling-stroke"></path></svg><span class="flow-source">Platform</span><span class="flow-label">feeds the next part of the system</span><span class="flow-target">Perception</span></li>
+<li class="arch-flow-step"><svg class="arch-arrow" viewBox="0 0 56 18" role="img" aria-label="flows to"><path d="M2 9H48" vector-effect="non-scaling-stroke"></path><path d="M41 3l9 6-9 6" vector-effect="non-scaling-stroke"></path></svg><span class="flow-source">Perception</span><span class="flow-label">feeds the next part of the system</span><span class="flow-target">Client/host</span></li>
+<li class="arch-flow-step"><svg class="arch-arrow" viewBox="0 0 56 18" role="img" aria-label="flows to"><path d="M2 9H48" vector-effect="non-scaling-stroke"></path><path d="M41 3l9 6-9 6" vector-effect="non-scaling-stroke"></path></svg><span class="flow-source">Client/host</span><span class="flow-label">feeds the next part of the system</span><span class="flow-target">Frame</span></li>
+<li class="arch-flow-step"><svg class="arch-arrow" viewBox="0 0 56 18" role="img" aria-label="flows to"><path d="M2 9H48" vector-effect="non-scaling-stroke"></path><path d="M41 3l9 6-9 6" vector-effect="non-scaling-stroke"></path></svg><span class="flow-source">Frame</span><span class="flow-label">feeds the next part of the system</span><span class="flow-target">Screen</span></li></ol></section></div>
+    </section>
+  </main>
+  <footer>
+    <span>generated_at: 2026-06-20T23:22:57.612288Z</span>
+    <span>public noindex</span>
+  </footer>
+</div>
+<script>
+(() => {
+  const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  const panels = new Map(tabs.map((tab) => [tab.id, document.getElementById(tab.getAttribute('aria-controls'))]));
+  function activate(tab, focus) {
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute('aria-selected', selected ? 'true' : 'false');
+      item.tabIndex = selected ? 0 : -1;
+      const panel = panels.get(item.id);
+      if (panel) panel.hidden = !selected;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(tab, false));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = tabs.length - 1;
+      activate(tabs[nextIndex], true);
+    });
+  });
+})();
+</script>
+</body>
+</html>
