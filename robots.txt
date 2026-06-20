@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+# Prudent default: keeps this Life-OS dashboard off search engines while it's still
+# accessible by URL on phone + desktop. To make it discoverable, delete this file
+# AND remove the <meta name="robots" content="noindex, nofollow"> line in index.html.
