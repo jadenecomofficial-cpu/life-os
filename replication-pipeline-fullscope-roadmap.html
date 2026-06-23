@@ -201,6 +201,23 @@ h3{margin:14px 0 8px;font-size:15px;letter-spacing:0}
   margin-bottom:8px;
 }
 .arch-card h3{margin:0;font-size:15px;line-height:1.25}
+.arch-card-detail{margin-top:8px!important}
+.arch-card-items{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  list-style:none;
+  padding:0;
+  margin:10px 0 0;
+}
+.arch-card-items li{
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:4px 7px;
+  color:var(--ink);
+  background-color:rgba(255,255,255,.025);
+  font-size:12px;
+}
 .arch-rail-tags{
   display:flex;
   flex-wrap:wrap;
@@ -310,7 +327,7 @@ footer{
     </div>
     <div class="hero-metrics" aria-label="Roadmap counts">
       <span class="metric"><b>6</b> phases</span>
-      <span class="metric"><b>6</b> events</span>
+      <span class="metric"><b>8</b> events</span>
       <span class="status status-active" data-status="active">Renderer: Active</span>
     </div>
   </header>
@@ -326,6 +343,8 @@ footer{
 <section class="phase-block" aria-labelledby="phase-heading-4"><div class="phase-heading"><div><p class="phase-kicker">Phase 4 · phase/hardening</p><h2 id="phase-heading-4">Hardening</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
 <section class="phase-block" aria-labelledby="phase-heading-5"><div class="phase-heading"><div><p class="phase-kicker">Phase 5 · Current state</p><h2 id="phase-heading-5">Observability</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><p class="empty">No public roadmap events are stored for this phase yet.</p></section>
 <section class="phase-block" aria-labelledby="phase-heading-6"><div class="phase-heading"><div><p class="phase-kicker">Phase 6 · Current state</p><h2 id="phase-heading-6">Current open gates</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><ol class="event-list"><li class="event-card"><div class="event-top"><span class="date-label">Cycle 77</span><span class="text-badge badge-arch-change">Type: arch-change</span><span class="text-badge badge-high">Significance: high</span></div><p>Latest run state is Cycle 77 on 2026-06-17. The project pivoted from active reel production to architecture normalization</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-arch-change">Type: arch-change</span><span class="text-badge badge-high">Significance: high</span></div><p>Jaden CORRECTED the closing framing (&quot;ready to resume reel production?&quot;): the accounting is a WORK ORDER, not a debrief. Next move is to NORMALIZE the architecture with the full catalog, NOT resume reel production</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-arch-change">Type: arch-change</span><span class="text-badge badge-high">Significance: high</span></div><p>NEW (this session, load-bearing): the accounting is a WORK ORDER not a debrief — normalize the architecture (consume every correction/eyeball/re-litigation into a guard so it can&#x27;t silently revert) BEFORE resuming reel production; that regression-proof...</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Execute Phase B of 2026-06-17-architecture-normalization-plan.md: for each of the 22 locked invariants, inspect live code for whether the fix is present and whether a regression test fails red if the fix is deliberately reverted.</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Jaden corrected the framing: the accounting is a WORK ORDER, not a debrief. Active reel production is paused until normalization converts every settled decision/eyeball gap into tests, gates, or structural guards</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-arch-change">Type: arch-change</span><span class="text-badge badge-high">Significance: high</span></div><p>Phase A is done: 2026-06-17-architecture-normalization-plan.md seeded the 22 locked invariants registry, eyeball-gap closure list, behavioral-guard list, and phased plan A-F</p></li>
@@ -345,7 +364,7 @@ footer{
     </section>
   </main>
   <footer>
-    <span>generated_at: 2026-06-21T02:08:46.795789Z</span>
+    <span>generated_at: 2026-06-23T08:28:41.811826Z</span>
     <span>public noindex</span>
   </footer>
 </div>

@@ -201,6 +201,23 @@ h3{margin:14px 0 8px;font-size:15px;letter-spacing:0}
   margin-bottom:8px;
 }
 .arch-card h3{margin:0;font-size:15px;line-height:1.25}
+.arch-card-detail{margin-top:8px!important}
+.arch-card-items{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  list-style:none;
+  padding:0;
+  margin:10px 0 0;
+}
+.arch-card-items li{
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:4px 7px;
+  color:var(--ink);
+  background-color:rgba(255,255,255,.025);
+  font-size:12px;
+}
 .arch-rail-tags{
   display:flex;
   flex-wrap:wrap;
@@ -310,7 +327,7 @@ footer{
     </div>
     <div class="hero-metrics" aria-label="Roadmap counts">
       <span class="metric"><b>6</b> phases</span>
-      <span class="metric"><b>8</b> events</span>
+      <span class="metric"><b>10</b> events</span>
       <span class="status status-active" data-status="active">Renderer: Active</span>
     </div>
   </header>
@@ -328,8 +345,10 @@ footer{
 <section class="phase-block" aria-labelledby="phase-heading-6"><div class="phase-heading"><div><p class="phase-kicker">Phase 6 · Current state</p><h2 id="phase-heading-6">Current open gates</h2></div><span class="status status-open" data-status="open">Phase: Open</span></div><ol class="event-list"><li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Jaden reloads the FH6 extension at extensions and confirms panel header reads FH6 v20-seg6-stepcap</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Run Test Spend or start from S1 until spend to farm handoff so Segment 6 fires and writes seg6-step-01..14.png into spend-diag</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>Then read the frames and fresh nav-log-live.json, identify the exact divergence step, and fix only the confirmed cause, likely with a detected race-start/menu gate before committing to FARMING</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-med">Significance: med</span></div><p>Downstream loop-killer (CONFIRMED in code + log): the Segment 6-seq_done branch in fh6-auto.js (~line 1049-1054) BLIND-COMMITS to FARMING with no check that a race launched → it held throttle on a static menu (100, motion static, screen:null forever), and every...</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-milestone">Type: milestone</span><span class="text-badge badge-high">Significance: high</span></div><p>Best milestone reached: four full end-to-end autonomous spend/grind cycles completed cleanly overnight. Each successful cycle bought 33 Subaru 22Bs, mastered 33, cleaned the garage, spent 33 wheelspins, returned to free roam, and initiated the next cycle</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-high">Significance: high</span></div><p>Active blocker: 5th cycle farm-start desync. Segment 6 returned from wheelspin tile hover but landed on the &quot;Wristband Events&quot; menu instead of launching the EventLab race</p></li>
+<li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-med">Significance: med</span></div><p>verdict: continue — next run must capture the per-step Segment 6 frames to CONFIRM where the route diverges, then fix only that cause</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-change">Type: change</span><span class="text-badge badge-med">Significance: med</span></div><p>Confirmed downstream loop-killer: Segment 6 seq_done blindly commits to FARMING without verifying race launch, causing throttle to be held on a static menu and Segment 8 to thrash because Segment 8 is race recovery, not wrong-menu recovery</p></li>
 <li class="event-card"><div class="event-top"><span class="date-label">Current state</span><span class="text-badge badge-decision">Type: decision</span><span class="text-badge badge-high">Significance: high</span></div><p>UNVERIFIED: exact Segment 6 divergence step. The next run must produce seg6-step-01..14.png frames</p></li></ol></section>
     </section>
@@ -347,7 +366,7 @@ footer{
     </section>
   </main>
   <footer>
-    <span>generated_at: 2026-06-21T02:08:46.792992Z</span>
+    <span>generated_at: 2026-06-23T08:28:41.809472Z</span>
     <span>public noindex</span>
   </footer>
 </div>
